@@ -3,6 +3,7 @@ Django settings for user_auth project.
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +14,8 @@ SECRET_KEY = 'your-secret-key'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Allow all hosts when running inside Docker
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -106,6 +108,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Static files directory when running in production (Docker)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/stable/ref/settings/#default-auto-field
